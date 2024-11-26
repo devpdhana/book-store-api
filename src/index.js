@@ -21,12 +21,6 @@ app.use('/api/books', bookRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/orders', orderRoutes);
 
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something went wrong!' });
-});
-
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/bookstore')
   .then(() => console.log('Connected to MongoDB'))
